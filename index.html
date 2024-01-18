@@ -32,6 +32,17 @@
             font-size: 3rem;
             font-family: "fixedsysfont";
         }
+
+        #button-holder{
+            width: 100%;
+            text-align: right;
+        }
+        button {
+            height: 04rem;
+            width: 10rem;
+            margin-right: 40px;
+            font-size: 1.5rem;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.js"></script>
     <title>Loooops</title>
@@ -43,6 +54,9 @@
     </div>
     <div id="canvas-holder">
         <canvas></canvas>
+    </div>
+    <div id="button-holder">
+        <button id="btn">Next</button>
     </div>
 
     <script>
@@ -76,22 +90,20 @@
             createCanvas(1400, 500, document.querySelector("canvas"));
             textAlign(CENTER, CENTER);
             // await intro();
-            level2();
         }
-
-        // function draw() {
-        //     // background(220);
-        // }
 
         async function intro() {
             let size = 0;
             let alpha = 1;
             background(220);
+            textFont(font);
             textSize(size);
+            push();
             fill(`rgba(0,0,0, ${alpha})`);
+            rectMode(CENTER)
             while (alpha > 0) {
                 text("Loops", width / 2, height / 2);
-                await sleep(17);
+                await sleep(30);
                 size += 10;
                 alpha -= 0.005
                 background(220);
@@ -99,7 +111,8 @@
                 fill(`rgba(0,0,0, ${alpha})`);
                 console.log(size, alpha)
             }
-
+            pop()
+            push()
             size = 0;
             alpha = 1;
             background(220);
@@ -108,7 +121,7 @@
             rotate(PI / 30);
             while (alpha > 0) {
                 text("for", width / 2, height / 2);
-                await sleep(17);
+                await sleep(30);
                 size += 10;
                 alpha -= 0.005
                 background(220);
@@ -116,7 +129,8 @@
                 fill(`rgba(0,0,0, ${alpha})`);
                 console.log(size, alpha)
             }
-
+            pop()
+            push()
             size = 0;
             alpha = 1;
             background(220);
@@ -125,7 +139,7 @@
             rotate(-PI / 20);
             while (alpha > 0) {
                 text("while", width / 2, height / 2);
-                await sleep(17);
+                await sleep(30);
                 size += 10;
                 alpha -= 0.005
                 background(220);
@@ -133,6 +147,28 @@
                 fill(`rgba(0,0,0, ${alpha})`);
                 console.log(size, alpha)
             }
+            pop()
+
+            push()
+            size = 0;
+            alpha = 0;
+            background(220);
+            textSize(size);
+            fill(`rgba(0,0,0, ${alpha})`);
+
+            while (alpha <= 1) {
+                text("To compare the working of for and while loops,\npress next.", width / 2, height / 2);
+                await sleep(30);
+                size += 2.5;
+                alpha += 0.05
+                background(220);
+                textSize(size)
+                fill(`rgba(0,0,0, ${alpha})`);
+                console.log(size, alpha)
+            }
+            text("To compare the working of for and while loops,\npress next.", width / 2, height / 2);
+
+            pop();
         }
 
         async function level1() {
@@ -151,7 +187,7 @@
             textFont(font, 22);
             textLeading(40);
             textAlign("LEFT");
-            text(textForOne, 20, 200)
+            text(textForOne, 20, 220)
             text(textWhileOne, 310, 200)
             pop();
 
@@ -165,7 +201,13 @@
 
             text('PLAY', 150, 455);
             text('PLAY', 440, 455);
-            angleMode(DEGREES);
+            textFont(font, 20);
+            fill("black")
+            strokeWeight(0);
+            text("You are an astronaut on an outer space mission. It is now time to return home, but you don't know the way back. Wizard for says to take the 5th space portal. Wizard while says to take the portal before the 6th one. Press PLAY to see the result.", 650, 30, 700, 150)
+
+
+
 
             image(spaceship, 600, 200, 50, 50);
             image(portal, 675, 350, 120, 120);
@@ -180,19 +222,23 @@
             levelOneStatus = false;
             levelTwoStatus = true;
             background(225);
+
             noFill();
             strokeWeight(2)
             rect(10, 10, 280, 480);
             rect(300, 10, 280, 480);
+            strokeWeight(0)
             textFont(font, 40);
             fill('black');
             text("for", 150, 30);
             text("while", 440, 30);
 
             push();
+            strokeWeight(0)
             textFont(font, 28);
             textLeading(40);
             textAlign("LEFT");
+            fill('black');
             text(textForTwo, 20, 200)
             text(textWhileTwo, 310, 200)
             pop();
@@ -210,51 +256,12 @@
 
             setupTwo();
 
-            // push();
-            // fill(225);
-            // strokeWeight(5);
-            // rect(640, 30, 730, 440);
-            // pop();
-            // noStroke();
-            // push();
-            // fill(80);
-            // rectMode(RADIUS);
-            // rect(1005, 250, 120, 120)
-            // pop();
-            // fill(225);
-            // rect(1010, 330, 40, 50);
-            // rect(880, 200, 60, 30);
-
-            // push();
-            // fill("#fbeac0")
-            // for (let y = 140; y <= 440; y += 50) {
-            //     circle(750, y, 20);
-            //     circle(1250, y, 20);
-
-            // }
-            // for (let x = 750; x <= 1250; x += 50) {
-            //     circle(x, 440, 20);
-            // }
-
-            // for (let x = 850; x <= 1200; x += 50) {
-            //     circle(x, 90, 20);
-            // }
-            // pop();
-            // push();
-            // fill("blue");
-            // circle(1250, 90, 20);
-            // pop();
-
-            // image(pacman, 760, 70, 40, 40);
-
         }
 
         function setupTwo() {
-            push();
-            fill(225);
-            strokeWeight(5);
-            rect(640, 30, 730, 440);
-            pop();
+            textSize(20);
+            fill("black");
+            text("To eat exactly 4 balls - use FOR loop. To keep eating the balls until you have eaten the BLUE ball, use WHILE.", 650, 5, 700, 50)
             noStroke();
             push();
             fill(80);
@@ -266,7 +273,7 @@
             rect(880, 200, 60, 30);
 
             push();
-            fill("#fbeac0")
+            fill("red")
             for (let y = 140; y <= 440; y += 50) {
                 circle(750, y, 20);
                 circle(1250, y, 20);
@@ -299,6 +306,7 @@
             push();
             rect(1150, 200, 50, 50);
             translate(1210, 200);
+            angleMode(DEGREES);
             rotate(90);
             image(spaceship, 0, 0, 50, 50);
 
@@ -349,7 +357,7 @@
             for (let x = 760; x <= 1000; x += 10) {
                 rect(700, 70, x - 680, 50);
                 image(pacman, x, 70, 40, 40);
-                await sleep(34);
+                await sleep(50);
             }
         }
 
@@ -359,7 +367,7 @@
             for (let x = 760; x <= 1240; x += 10) {
                 rect(700, 70, x - 680, 50);
                 image(pacman, x, 70, 40, 40);
-                await sleep(34);
+                await sleep(50);
             }
         }
 
@@ -381,6 +389,15 @@
             }
         }
 
+        let flow = [level1, level2];
+        document.querySelector("#btn").addEventListener("click",()=>{
+            a = flow.shift();
+            if ( a ) 
+                a();
+            else
+                document.querySelector("#btn").setAttribute("disabled", "disabled")
+        })
+    
     </script>
 </body>
 
