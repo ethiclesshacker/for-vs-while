@@ -69,8 +69,8 @@
         let levelOneStatus = true;
         let levelTwoStatus = false;
 
-        const textForOne = "for(pos=1;pos<=5;i++)\n{\n\tmoveSpaceShipForward()\n}";
-        const textWhileOne = "pos=1\nwhile(pos<6)\n{\n\tmoveSpaceShipForward()\n}";
+        const textForOne = "for(pos=1;pos<=4;i++)\n{\n\tmoveSpaceShipForward()\n}";
+        const textWhileOne = "pos=1\nwhile(pos<5)\n{\n\tmoveSpaceShipForward()\n}";
         const textForTwo = "for(i=1;i<=4;i++)\n{\n\teat()\n}";
         const textWhileTwo = "while(eat!='blue')\n{\n\teat()\n}"
 
@@ -204,7 +204,7 @@
             textFont(font, 20);
             fill("black")
             strokeWeight(0);
-            text("You are an astronaut on an outer space mission. It is now time to return home, but you don't know the way back. Wizard for says to take the 5th space portal. Wizard while says to take the portal before the 6th one. Press PLAY to see the result.", 650, 30, 700, 150)
+            text("You are an astronaut on an outer space mission. It is now time to return home, but you don't know the way back. Wizard for says to take the 4th space portal. Wizard while says to take the portal before the 5th one. Press PLAY to see the result.", 650, 30, 700, 150)
 
 
 
@@ -259,6 +259,9 @@
         }
 
         function setupTwo() {
+
+            fill(225);
+            rect(640, 30, 730, 440);
             textSize(20);
             fill("black");
             text("To eat exactly 4 balls - use FOR loop. To keep eating the balls until you have eaten the BLUE ball, use WHILE.", 650, 5, 700, 50)
